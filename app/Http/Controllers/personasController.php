@@ -8,6 +8,10 @@ use App\Http\Requests;
 use App\personas;
 class personasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.basic', ['only'=>['store','update', 'destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,9 +53,15 @@ class personasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        if(!$request->get('nombre') || !$request->get('apellido') || !$request->get('rut') || !$request->get('fecha'))
+        {
+          return response()->json(['mensaje'=>'Datos invalidos o incompletos']);
+        }
+        
+        personas::create($request->all());
+        return response()->json(['mensaje'=>'La persona ha sido creada']);
     }
 
     /**
