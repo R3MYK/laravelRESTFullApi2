@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('personas','personasController');
+
+
+
+// Route::resource('personas', 'UserController',
+//                 ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
