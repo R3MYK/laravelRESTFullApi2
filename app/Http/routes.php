@@ -11,12 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','personasController@showAll');
 Route::resource('personas','personasController');
 
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 // Route::resource('personas', 'UserController',
 //                 ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+// Route::auth();
+
+// Route::get('/home', 'HomeController@index');
