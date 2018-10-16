@@ -144,7 +144,7 @@ class personasController extends Controller
             $personas->fecha=$fecha;
             $personas->save();
 
-            return "Grabado con PUT correctamente";
+            return "Grabado con PUT correctamente :)";
         // return "Mostrando formulario para actualizar personas";
     }
 
@@ -156,6 +156,14 @@ class personasController extends Controller
      */
     public function destroy($id)
     {
-        return "Mostrando formulario para eliminar personas";
+        $personas=personas::find($id);
+        if(!$personas)
+        {
+            return response()->json(['mensaje'=>'La persona nose encuentra en la Base de datos']);
+        }
+        $personas->delete();
+        return response()->json(['mensaje'=>'Se ha eliminado el registro']);
+
+        // return "Mostrando formulario para eliminar personas";
     }
 }
