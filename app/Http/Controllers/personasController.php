@@ -34,7 +34,7 @@ class personasController extends Controller
      */
     public function create()
     {
-        //
+        return "Mostrando menu para craer una persona";
     }
 
     /**
@@ -43,7 +43,7 @@ class personasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
     }
@@ -56,7 +56,7 @@ class personasController extends Controller
      */
     public function show($id)
     {
-        //
+        return "Mostrando persona con id $id";
     }
 
     /**
@@ -67,7 +67,7 @@ class personasController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Mostrando formulario para editar personas";
     }
 
     /**
@@ -77,9 +77,9 @@ class personasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        return "Mostrando formulario para actualizar personas";
     }
 
     /**
@@ -90,6 +90,6 @@ class personasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "Mostrando formulario para eliminar personas";
     }
 }
