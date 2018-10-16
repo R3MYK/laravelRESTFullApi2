@@ -23,10 +23,14 @@ class personasController extends Controller
 
     public function index()
     {
-       return "Mostrando la lista de pesonas";
+       // return "Mostrando la lista de pesonas";
+
+        // return personas::All();
+
+        return response()->json(['datos'=>personas::All()]);
+
+
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,6 +39,8 @@ class personasController extends Controller
     public function create()
     {
         return "Mostrando menu para craer una persona";
+
+
     }
 
     /**
@@ -56,7 +62,13 @@ class personasController extends Controller
      */
     public function show($id)
     {
-        return "Mostrando persona con id $id";
+        // return "Mostrando persona con id $id";
+
+        $persona=personas::find($id);
+        if (!$persona){
+             return response(['mensaje'=>'No se encuentra la persona en la BD']);
+        }
+        return response(['datos'=>$persona]);
     }
 
     /**
