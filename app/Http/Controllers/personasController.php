@@ -99,9 +99,53 @@ class personasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request, $id)
     {
-        return "Mostrando formulario para actualizar personas";
+
+        $metodo=$request->method();
+        $personas=personas::find($id);
+        if($metodo==="PATCH")
+        {
+            $nombre=$request->get('nombre');
+            if($nombre!=null && $nombre!=''){
+                $personas->nombre=$nombre;
+            }
+            $apellido=$request->get('apellido');
+            if($apellido!=null && $apellido!=''){
+                $personas->apellido=$apellido;
+            // return "EStoy en PATCH";
+            }
+            $rut=$request->get('rut');
+            if($rut!=null && $rut!=''){
+                $personas->rut=$rut;
+            // return "EStoy en PATCH";
+            }
+            $fecha=$request->get('fecha');
+            if($fecha!=null && $fecha!=''){
+                $personas->fecha=$fecha;
+            // return "EStoy en PATCH";
+            }
+            $personas->save();
+            return "Registro editado con PATCH";
+        }
+            
+            $nombre=$request->get('nombre');
+            $apellido=$request->get('apellido');
+            $rut=$request->get('rut');
+            $fecha=$request->get('fecha');
+            if(!$nombre || !$apellido || !$rut || !$fecha)
+            {
+                return "error";
+            }
+        
+            $personas->nombre=$nombre;
+            $personas->apellido=$apellido;
+            $personas->rut=$rut;
+            $personas->fecha=$fecha;
+            $personas->save();
+
+            return "Grabado con PUT correctamente";
+        // return "Mostrando formulario para actualizar personas";
     }
 
     /**
